@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Keizoku — Pace Keeper</title>
+<meta name="description" content="Track whether you are keeping the pace you committed to on long-running projects.">
+<meta name="theme-color" content="#101113">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Keizoku">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wordmark">
+    <span class="wm-en">KEIZOKU</span>
+    <span class="wm-jp">継続</span>
+  </div>
+  <div class="topbar-actions">
+    <button class="iconbtn" id="btn-install" hidden title="Install app" aria-label="Install app">⤓</button>
+    <button class="iconbtn" id="btn-settings" title="Settings" aria-label="Settings">⚙</button>
+  </div>
+</header>
+
+<main id="main">
+  <!-- TODAY -->
+  <section class="view" id="view-today" hidden>
+    <div class="date-rule">
+      <h1 id="today-title">Today</h1>
+      <p class="sub" id="today-sub"></p>
+    </div>
+    <div id="today-pace"></div>
+    <div id="today-blocks"></div>
+    <div id="today-routines"></div>
+    <div id="today-quicklog"></div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="view" id="view-projects" hidden>
+    <div class="view-head">
+      <h1>Projects</h1>
+      <button class="btn btn-primary" id="btn-add-project">New project</button>
+    </div>
+    <div id="projects-list"></div>
+    <div class="view-head sect">
+      <h2>Routines</h2>
+      <button class="btn" id="btn-add-routine">New routine</button>
+    </div>
+    <div id="routines-list"></div>
+    <div id="archived-wrap"></div>
+  </section>
+
+  <!-- STATS -->
+  <section class="view" id="view-stats" hidden>
+    <div class="view-head"><h1>Stats</h1></div>
+    <div class="card">
+      <div class="card-label">Hours per week — last 12 weeks</div>
+      <canvas id="chart-weeks" height="180"></canvas>
+    </div>
+    <div class="card">
+      <div class="card-label">Hours per month — last 6 months</div>
+      <canvas id="chart-months" height="180"></canvas>
+    </div>
+    <div id="stats-projects"></div>
+  </section>
+
+  <!-- LOG -->
+  <section class="view" id="view-log" hidden>
+    <div class="view-head">
+      <h1>Log</h1>
+      <button class="btn btn-primary" id="btn-add-session">Log time</button>
+    </div>
+    <div id="log-list"></div>
+  </section>
+</main>
+
+<!-- Active timer bar -->
+<div id="timerbar" class="timerbar" hidden>
+  <div class="timerbar-info">
+    <span class="timer-dot" aria-hidden="true"></span>
+    <span id="timerbar-project"></span>
+    <span id="timerbar-clock" class="mono">0:00</span>
+  </div>
+  <div class="timerbar-actions">
+    <button class="btn btn-ghost" id="btn-timer-discard">Discard</button>
+    <button class="btn btn-primary" id="btn-timer-stop">Stop &amp; save</button>
+  </div>
+</div>
+
+<nav class="tabbar" aria-label="Main">
+  <button class="tab" data-view="today"><span class="tab-jp">今日</span><span>Today</span></button>
+  <button class="tab" data-view="projects"><span class="tab-jp">計画</span><span>Projects</span></button>
+  <button class="tab" data-view="stats"><span class="tab-jp">記録</span><span>Stats</span></button>
+  <button class="tab" data-view="log"><span class="tab-jp">帳簿</span><span>Log</span></button>
+</nav>
+
+<!-- Modal shell -->
+<div class="overlay" id="overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" id="modal">
+    <div class="modal-head">
+      <h2 id="modal-title"></h2>
+      <button class="iconbtn" id="modal-close" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>

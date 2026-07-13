@@ -1,0 +1,16 @@
+{
+  "name": "Keizoku — Pace Keeper",
+  "short_name": "Keizoku",
+  "description": "Track whether you are keeping the pace you committed to on long-running projects.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#101113",
+  "theme_color": "#101113",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
